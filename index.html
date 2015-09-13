@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+       <title>OmniLoco.org</title>
+       <link rel="stylesheet" href="css/style.css"/>
+	   <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script>
+   
+
+$(document).ready(function() {
+  setTargets(1000);
+});
+
+$(window).on('resize', function(){
+	waitForFinalEvent(function(){
+		setTargets(100);
+	}, 500, "some unique string");
+});
+
+<!----- JQUERY FOR SLIDING NAVIGATION --->   
+function setTargets(delay) {$('a[href*=#]').each(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+    && location.hostname == this.hostname
+    && this.hash.replace(/#/,'') ) {
+      var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) +']');
+      var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
+       if ($target) {
+         var targetOffset = $target.offset().top;
+
+<!----- JQUERY CLICK FUNCTION REMOVE AND ADD CLASS "ACTIVE" + SCROLL TO THE #DIV--->   
+         $(this).click(function() {
+            $("#nav li a").removeClass("active");
+            $(this).addClass('active');
+           $('html, body').animate({scrollTop: targetOffset}, delay);
+           return false;
+         });
+      }
+    }
+  });
+};
+
+var waitForFinalEvent = (function () {
+  var timers = {};
+  return function (callback, ms, uniqueId) {
+    if (!uniqueId) {
+      uniqueId = "Don't call this twice without a uniqueId";
+    }
+    if (timers[uniqueId]) {
+      clearTimeout (timers[uniqueId]);
+    }
+    timers[uniqueId] = setTimeout(callback, ms);
+  };
+})();
+
+</script>
+
+
+ </head> 
+	
+<body>
+
+<!----- TOP BAR--->   
+<header id="header">
+<div class="section">
+<div id="logo"><a href="">OmniLoco</a></div>
+
+<nav id="nav">
+	<ul>
+		<li><a href="#home_section" class="active" title="Next Section" >Home</a></li>
+		<li><a href="#section2" title="Next Section">About</a></li>
+		<li><a href="#section3" title="Next Section">Mission</a></li>
+		<li><a  href="#section4" title="Next Section">TauLabs</a></li>
+		<li><a href="#section5" title="Next Section">Future</a></li>
+	</ul>
+</nav>
+</div>
+</header>	
+<!----- TOP BAR END--->   
+
+<!----- SECTIONS START --->   	
+	<div id="home_section">
+		<div class="section">
+            <h2>OmniLoco</h2>
+		    <h1>Foundation</h1>
+		    <div id="divider"> </div>
+		     <h3>The leader in Free and Open software and autonomous control hardware.</h3>
+		</div> 
+    </div> 
+
+	<div id="section2">
+		<div class="section" >
+            <div class="section_content">
+			<h4>About</h4>
+		    <h3 class="quotes">The OmniLoco Foundation is a non-profit foundation focused on UAVs.  It was established in 2011 by David Carlson and Angus Peart.  Tau Labs has decided to join forces and is governed by the OmniLoco Foundation which will handle all financial aspects of running the project and maintain control over all resources.  The board of directors for the OmniLoco Foundation (as elected at the Dec 2012 annual board meeting) consists of:
+- Jose Barros
+- David Carlson
+- James Cotton
+- Vincent Kessler
+- Edouard Lafargue
+- Angus Peart
+- Dale Schinstock
+- Kenn Sebesta
+- Stacey Sheldon</h3>
+		</div> 
+		</div> 
+    </div> 
+	
+	
+   <div id="section3">
+		<div class="section">
+			   <div class="section_content">
+			   <h2>Mission</h2>
+		       <h3 class="quotes">Quisque sagittis bibendum augue, euismod euismod augue dictum eget. In nec justo pharetra, ultrices purus sed, efficitur nisl. Maecenas imperdiet consectetur semper. In scelerisque enim vel euismod iaculis. Mauris bibendum sit amet leo eget cursus. Cras sed ornare purus. Proin a sollicitudin turpis, at ultrices risus. Sed et libero convallis, viverra eros nec, ornare magna.</h3>
+		    </div> 
+		</div> 
+    </div> 
+	
+	
+	<div id="section4">
+		<div class="section">
+              <div class="section_content">
+			  <h4>Tau Labs</h4>
+		    <h3 class="quotes">Tau Labs is an Open Source project aimed to create high quality code for controlling multirotors and other UAVs. Please see our <a href="http://taulabs.org/about.html">about page</a> for a long description of our goals objectives. For a list of features of our software, please see <a href="http://taulabs.org/features.html">this page</a>. The developement is driven entirely by volunteers donating their time in pursuit of this goal. Tau Labs also has an active community and we invite you to drop into our <a href="http://taulabs.org/webchat.html">IRC channel</a> (freenode.net #taulabs) or <a href="http://forums.taulabs.org">forums.</a></h3>
+		</div> 
+		</div> 
+    </div> 
+	
+	
+	<div id="section5">
+		<div class="section">
+           <div class="section_content">
+		   <h2>Future</h2>
+		    <h3 class="quotes">Quisque sagittis bibendum augue, euismod euismod augue dictum eget. In nec justo pharetra, ultrices purus sed, efficitur nisl. Maecenas imperdiet consectetur semper. In scelerisque enim vel euismod iaculis. Mauris bibendum sit amet leo eget cursus. Cras sed ornare purus. Proin a sollicitudin turpis, at ultrices risus. Sed et libero convallis, viverra eros nec, ornare magna.</h3>
+		  </div> 
+ 
+		</div> 
+		<div id="copyright">
+			<a href="http://www.omniloco.org/">Copyright 2015 omniloco.org </a>
+		</div>
+    </div> 
+	
+<!----- SECTIONS END --->
+
+</body>
+</html>
